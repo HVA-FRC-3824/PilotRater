@@ -22,13 +22,11 @@ public class LVA_MatchList extends ArrayAdapter<Integer> {
 
     private ArrayList<Integer> mMatchNumbers;
     private Context mContext;
-    private Database mDatabase;
 
     public LVA_MatchList(Context context, ArrayList<Integer> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
         mMatchNumbers = objects;
         mContext = context;
-        mDatabase = Database.getInstance();
     }
 
     @Override
@@ -41,10 +39,9 @@ public class LVA_MatchList extends ArrayAdapter<Integer> {
         final int match_number = mMatchNumbers.get(position);
 
 
-        Match match = mDatabase.getMatch(match_number);
-
         TextView txt1 = (TextView) convertView.findViewById(android.R.id.text1);
         txt1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        txt1.setText(String.format("Match %d", match_number));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -71,6 +71,11 @@ public class PilotRater extends Activity {
         for(int i = 0; i < 6; i++)
         {
             mTeams.get(i).setTeamNumber(match.teams.get(i));
+            if(i < 3){
+                mTeams.get(i).setBackgroundColor(Color.BLUE);
+            } else {
+                mTeams.get(i).setBackgroundColor(Color.RED);
+            }
         }
 
         MatchPilotData mpd = mDatabase.getMatchPilotData(mMatchNumber);
@@ -434,13 +439,13 @@ public class PilotRater extends Activity {
         }
     }
 
-    public String save()
-    {
+    public String save() {
         MatchPilotData mpd = new MatchPilotData();
         mpd.match_number = mMatchNumber;
         for(int i = 0; i < 6; i++){
             mpd.teams.add(mTeams.get(i).get());
         }
+        mDatabase.setMatchPilotData(mpd);
         return "";
     }
 }

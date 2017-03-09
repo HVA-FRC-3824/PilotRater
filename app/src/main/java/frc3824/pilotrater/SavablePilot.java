@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -36,18 +37,27 @@ public class SavablePilot extends RelativeLayout implements View.OnLongClickList
 
         mTeamNumberTV = ((TextView) findViewById(R.id.team_number));
         mRating = ((Spinner)findViewById(R.id.rating));
-        ArrayAdapter<String> aa = new ArrayAdapter<>(context, android.R.layout.simple_list_item_single_choice, Constants.RATING_OPTIONS);
+        LVA_PilotRating aa = new LVA_PilotRating(context, new ArrayList<>(Arrays.asList(Constants.RATING_OPTIONS)));
         mRating.setAdapter(aa);
         mDrops = ((TextView)findViewById(R.id.drops));
         mDrops.setOnClickListener(this);
         mDrops.setOnLongClickListener(this);
+        mDrops.setText("0");
+        findViewById(R.id.drops_label).setOnClickListener(this);
+        findViewById(R.id.drops_label).setOnLongClickListener(this);
+
         mLifts = ((TextView)findViewById(R.id.lifts));
+        mLifts.setOnClickListener(this);
+        mLifts.setOnLongClickListener(this);
+        mLifts.setText("0");
+        findViewById(R.id.lifts_label).setOnClickListener(this);
+        findViewById(R.id.lifts_label).setOnLongClickListener(this);
 
     }
 
     void setTeamNumber(int team_number) {
         mTeamNumber = team_number;
-        mTeamNumberTV.setText(String.format("%d's Pilot:"));
+        mTeamNumberTV.setText(String.format("%d's Pilot:", team_number));
     }
 
     public String getErrors(){
@@ -77,12 +87,14 @@ public class SavablePilot extends RelativeLayout implements View.OnLongClickList
         switch (v.getId())
         {
             case R.id.drops:
+            case R.id.drops_label:
                 if(mDropsCount > 0){
                     mDropsCount--;
                     mDrops.setText(String.valueOf(mDropsCount));
                 }
                 break;
             case R.id.lifts:
+            case R.id.lifts_label:
                 if(mLiftsCount > 0) {
                     mLiftsCount--;
                     mLifts.setText(String.valueOf(mLiftsCount));
@@ -90,7 +102,7 @@ public class SavablePilot extends RelativeLayout implements View.OnLongClickList
                 break;
         }
 
-        return false;
+        return true;
     }
 
     @Override
@@ -98,16 +110,14 @@ public class SavablePilot extends RelativeLayout implements View.OnLongClickList
         switch (v.getId())
         {
             case R.id.drops:
-                if(mDropsCount > 0){
-                    mDropsCount++;
-                    mDrops.setText(String.valueOf(mDropsCount));
-                }
+            case R.id.drops_label:
+                mDropsCount++;
+                mDrops.setText(String.valueOf(mDropsCount));
                 break;
             case R.id.lifts:
-                if(mLiftsCount > 0) {
-                    mLiftsCount++;
-                    mLifts.setText(String.valueOf(mLiftsCount));
-                }
+            case R.id.lifts_label:
+                mLiftsCount++;
+                mLifts.setText(String.valueOf(mLiftsCount));
                 break;
         }
     }

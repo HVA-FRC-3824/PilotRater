@@ -16,6 +16,9 @@ public interface Constants {
     String VERSION = "1.0.0";
     String MATCH_NUMBER = "match_number";
 
+    String EVENT_KEY = "event_key";
+    String APP_DATA = "appData";
+
     String[] SUPER_SCOUTS_LIST = {
             "Steven Busby",
             "Philip Hicks",

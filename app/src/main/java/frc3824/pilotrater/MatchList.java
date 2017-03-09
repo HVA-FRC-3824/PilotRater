@@ -28,7 +28,6 @@ public class MatchList extends Activity {
 
         ListView listView = (ListView)findViewById(R.id.match_list);
 
-        match_numbers.add(-1);
         for(int i = 1; i <= numberOfMatches; i++) {
             match_numbers.add(i);
         }

@@ -142,7 +142,7 @@ public class Database {
         //endregion
 
         //region Schedule
-        mMatchPilotRef = mEventRef.child("schedule");
+        mMatchPilotRef = mEventRef.child("pilot");
         mPilotMap = new HashMap<>();
         mMatchPilotRef.addChildEventListener(new ChildEventListener() {
             @Override

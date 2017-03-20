@@ -101,7 +101,7 @@ public class Database {
     }
 
     private void setEventKey(String eventKey) {
-        if (eventKey == "" || mEventKey == eventKey)
+        if (eventKey.isEmpty() || mEventKey == eventKey)
             return;
 
         mEventRef = mRootRef.child(eventKey);
@@ -141,8 +141,8 @@ public class Database {
         });
         //endregion
 
-        //region Schedule
-        mMatchPilotRef = mEventRef.child("pilot");
+        //region Match Pilot
+        mMatchPilotRef = mEventRef.child("pilot").child("match");
         mPilotMap = new HashMap<>();
         mMatchPilotRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -179,22 +179,9 @@ public class Database {
     }
 
     //region Schedule Data
-    public void setMatch(Match match) {
-        mScheduleRef.child(String.format("%d", match.match_number)).setValue(match);
-    }
-
     public Match getMatch(int match_number)
     {
         return mSchedule.get(match_number);
-    }
-
-    public void removeMatch(int match_number){
-        mScheduleRef.child(String.format("%d", match_number)).removeValue();
-    }
-
-    public Map<Integer, Match> getSchedule()
-    {
-        return mSchedule;
     }
 
     public int getNumberOfMatches()
@@ -204,14 +191,13 @@ public class Database {
     //endregion
 
     //region Pilot Data
-    public MatchPilotData getMatchPilotData(int match_number)
-    {
+    public MatchPilotData getMatchPilotData(int match_number) {
         return mPilotMap.get(match_number);
     }
 
-    public void setMatchPilotData(MatchPilotData mpd)
-    {
-        mMatchPilotRef.child(String.format("%d", mpd.match_number)).setValue(mpd);
+    public void setMatchPilotData(MatchPilotData mpd) {
+        mpd.last_modified = System.currentTimeMillis();
+        mMatchPilotRef.child(String.valueOf(mpd.match_number)).setValue(mpd);
     }
     //endregion
 }

@@ -13,5 +13,6 @@ public class MatchPilotData {
     }
 
     public int match_number;
+    public long last_modified;
     public ArrayList<MatchTeamPilotData> teams;
 }

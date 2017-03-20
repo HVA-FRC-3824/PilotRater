@@ -118,7 +118,7 @@ public class PilotRater extends Activity {
                 });
             }
         });
-        if(mScoutName == null || mScoutName.equals("")) {
+        if(mScoutName == null || mScoutName.isEmpty()) {
             mLogisticsDialog.show();
         }
     }

@@ -57,7 +57,7 @@ public class SavablePilot extends RelativeLayout implements View.OnLongClickList
 
     void setTeamNumber(int team_number) {
         mTeamNumber = team_number;
-        mTeamNumberTV.setText(String.format("%d's Pilot:", team_number));
+        mTeamNumberTV.setText(String.format("%d:", team_number));
     }
 
     public String getErrors(){
@@ -74,7 +74,7 @@ public class SavablePilot extends RelativeLayout implements View.OnLongClickList
 
     public MatchTeamPilotData get(){
         MatchTeamPilotData mtpd = new MatchTeamPilotData();
-        mtpd.team = mTeamNumber;
+        mtpd.team_number = mTeamNumber;
         mtpd.rating = Constants.RATING_OPTIONS[mRating.getSelectedItemPosition()];
         mtpd.drops = mDropsCount;
         mtpd.lifts = mLiftsCount;

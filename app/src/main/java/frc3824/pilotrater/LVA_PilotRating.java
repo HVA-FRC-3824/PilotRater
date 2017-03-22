@@ -40,6 +40,7 @@ public class LVA_PilotRating extends ArrayAdapter<String> {
 
         txt.setText(mOptions.get(position));
         txt.setTextColor(Color.WHITE);
+        txt.setTextSize(20);
         txt.setBackground(null);
 
         return convertView;
@@ -57,6 +58,7 @@ public class LVA_PilotRating extends ArrayAdapter<String> {
 
         txt.setText(mOptions.get(position));
         txt.setTextColor(Color.BLACK);
+        txt.setTextSize(20);
         txt.setBackgroundColor(Color.WHITE);
 
         return convertView;

@@ -37,7 +37,11 @@ public class Home extends AppCompatActivity {
 
         final SharedPreferences sp = getSharedPreferences(Constants.APP_DATA, Context.MODE_PRIVATE);
         mEventKey = sp.getString(Constants.EVENT_KEY, "");
-        event_key.setText(mEventKey);
+        Database.getInstance();
+        if(!mEventKey.isEmpty()) {
+            event_key.setText(mEventKey);
+            Database.getInstance(mEventKey);
+        }
 
         event_key.addTextChangedListener(new TextWatcher() {
             @Override

@@ -176,6 +176,7 @@ public class Database {
         //endregion
         //endregion
 
+        mEventKey = eventKey;
     }
 
     //region Schedule Data

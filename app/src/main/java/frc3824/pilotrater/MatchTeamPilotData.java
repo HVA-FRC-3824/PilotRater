@@ -7,7 +7,7 @@ package frc3824.pilotrater;
 
 public class MatchTeamPilotData {
 
-    public int team;
+    public int team_number;
     public String rating;
     public int drops;
     public int lifts;

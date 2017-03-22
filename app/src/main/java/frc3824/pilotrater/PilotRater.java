@@ -70,7 +70,7 @@ public class PilotRater extends Activity {
         mTeams.add((SavablePilot) findViewById(R.id.red3));
         for(int i = 0; i < 6; i++)
         {
-            mTeams.get(i).setTeamNumber(match.teams.get(i));
+            mTeams.get(i).setTeamNumber(match.team_numbers.get(i));
             if(i < 3){
                 mTeams.get(i).setBackgroundColor(Color.BLUE);
             } else {

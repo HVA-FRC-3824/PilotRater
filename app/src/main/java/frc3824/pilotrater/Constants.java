@@ -13,7 +13,7 @@ public interface Constants {
      - middle number is changed after events
      - left most number is changed after the season
      */
-    String VERSION = "1.0.0";
+    String VERSION = "2.3.1";
     String MATCH_NUMBER = "match_number";
 
     String EVENT_KEY = "event_key";
